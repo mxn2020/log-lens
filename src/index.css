@@ -1,0 +1,177 @@
+/* Log Lens — Terminal Green & Console Black */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root,
+[data-theme="dark"] {
+  --color-bg-primary: #0C0C0C;
+  --color-bg-secondary: #161616;
+  --color-bg-tertiary: #1E1E1E;
+  --color-bg-card: #161616;
+  --color-bg-hover: rgba(34, 197, 94, 0.08);
+  --color-text-primary: #E4E4E7;
+  --color-text-secondary: #71717A;
+  --color-text-tertiary: #3F3F46;
+  --color-text-inverse: #0C0C0C;
+  --color-accent-primary: #22C55E;
+  --color-accent-secondary: #4ADE80;
+  --color-accent-tertiary: #16A34A;
+  --color-accent-soft: rgba(34, 197, 94, 0.12);
+  --color-success: #22C55E;
+  --color-danger: #EF4444;
+  --color-warning: #F59E0B;
+  --color-info: #3B82F6;
+  --color-border: #262626;
+  --color-border-strong: #3F3F46;
+  --card-shadow: none;
+  --log-debug: #71717A;
+  --log-info: #3B82F6;
+  --log-warn: #F59E0B;
+  --log-error: #EF4444;
+  --log-fatal: #DC2626;
+}
+
+[data-theme="light"] {
+  --color-bg-primary: #FAFAFA;
+  --color-bg-secondary: #F4F4F5;
+  --color-bg-tertiary: #E4E4E7;
+  --color-bg-card: #FFFFFF;
+  --color-bg-hover: rgba(22, 163, 74, 0.06);
+  --color-text-primary: #18181B;
+  --color-text-secondary: #52525B;
+  --color-text-tertiary: #A1A1AA;
+  --color-text-inverse: #FFFFFF;
+  --color-accent-primary: #16A34A;
+  --color-accent-secondary: #22C55E;
+  --color-accent-tertiary: #15803D;
+  --color-accent-soft: rgba(22, 163, 74, 0.1);
+  --color-success: #16A34A;
+  --color-danger: #DC2626;
+  --color-warning: #D97706;
+  --color-info: #2563EB;
+  --color-border: #E4E4E7;
+  --color-border-strong: #D4D4D8;
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --log-debug: #A1A1AA;
+  --log-info: #2563EB;
+  --log-warn: #D97706;
+  --log-error: #DC2626;
+  --log-fatal: #B91C1C;
+}
+
+:root {
+  --font-family: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --transition-fast: 0.15s ease;
+  --sidebar-width: 240px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  transition: all var(--transition-fast);
+}
+
+.btn:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.btn-primary {
+  background: var(--color-accent-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-accent-primary);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-secondary);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+}
+
+.btn-ghost:hover {
+  background: var(--color-bg-secondary);
+}
+
+.btn-sm {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-xs);
+}
+
+.log-line {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 16px;
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition-fast);
+  line-height: 1.7;
+}
+
+.log-line:hover {
+  background: var(--color-bg-hover);
+}

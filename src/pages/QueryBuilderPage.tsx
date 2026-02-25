@@ -1,0 +1,47 @@
+import { Play, Save, Clock, BookOpen } from "lucide-react";
+
+export default function QueryBuilderPage() {
+    const savedQueries = [
+        { name: "Auth Errors (24h)", query: 'level:ERROR AND app:auth-svc | timeRange:24h', runs: 42 },
+        { name: "Slow Requests", query: 'msg:*ms) AND msg:>[500ms] | sort:ts desc', runs: 18 },
+        { name: "Worker Failures", query: 'level:ERROR AND app:worker AND msg:failed', runs: 31 },
+    ];
+
+    return (<div style={{ padding: "var(--space-6)", maxWidth: 1200 }}>
+        <h1 style={{ fontSize: "var(--font-size-2xl)", fontWeight: 700, marginBottom: "var(--space-6)" }}>Query Builder</h1>
+
+        <div className="card" style={{ marginBottom: "var(--space-6)", overflow: "hidden" }}>
+            <div style={{ padding: "var(--space-5)" }}>
+                <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "var(--color-text-secondary)", marginBottom: "var(--space-2)" }}>Log Query</label>
+                <div style={{ position: "relative" }}>
+                    <textarea style={{ width: "100%", height: 80, padding: 12, fontFamily: "var(--font-mono)", fontSize: "13px", background: "var(--color-bg-primary)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-sm)", color: "var(--color-accent-primary)", resize: "vertical" }} defaultValue={'level:ERROR AND app:auth-svc | timeRange:24h | limit:100'} />
+                </div>
+            </div>
+            <div style={{ padding: "var(--space-3) var(--space-5)", background: "var(--color-bg-tertiary)", borderTop: "1px solid var(--color-border)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <div style={{ display: "flex", gap: "var(--space-2)" }}>
+                    <button className="btn btn-primary btn-sm"><Play size={14} /> Run Query</button>
+                    <button className="btn btn-sm"><Save size={14} /> Save</button>
+                </div>
+                <span style={{ fontSize: "12px", fontFamily: "var(--font-mono)", color: "var(--color-text-tertiary)", display: "flex", alignItems: "center", gap: 4 }}><Clock size={14} /> Estimated scan: ~12,400 logs</span>
+            </div>
+        </div>
+
+        <div>
+            <h2 style={{ fontSize: "16px", fontWeight: 600, marginBottom: "var(--space-4)", display: "flex", alignItems: "center", gap: "var(--space-2)" }}><BookOpen size={18} /> Saved Queries</h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
+                {savedQueries.map(q => (
+                    <div key={q.name} className="card" style={{ padding: "var(--space-4)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <div>
+                            <h3 style={{ fontWeight: 600, marginBottom: 4 }}>{q.name}</h3>
+                            <code className="mono" style={{ color: "var(--color-accent-primary)", fontSize: "12px" }}>{q.query}</code>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
+                            <span style={{ fontSize: "12px", color: "var(--color-text-tertiary)", fontFamily: "var(--font-mono)" }}>{q.runs} runs</span>
+                            <button className="btn btn-sm"><Play size={14} /> Run</button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </div>);
+}
