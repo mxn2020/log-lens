@@ -1,4 +1,5 @@
 import { Bell, Plus, AlertTriangle, CheckCircle2, XCircle } from "lucide-react";
+import { Button, Card, Badge } from "@geenius-ui/react-css";
 
 export default function AlertsPage() {
     const alerts = [
@@ -11,12 +12,12 @@ export default function AlertsPage() {
     return (<div style={{ padding: "var(--space-6)", maxWidth: 1000 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "var(--space-6)" }}>
             <h1 style={{ fontSize: "var(--font-size-2xl)", fontWeight: 700, display: "flex", alignItems: "center", gap: "var(--space-2)" }}><Bell /> Alert Rules</h1>
-            <button className="btn btn-primary"><Plus size={16} /> New Alert</button>
+            <Button variant="primary" icon={<Plus size={16} />}>New Alert</Button>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
             {alerts.map(a => (
-                <div key={a.id} className="card" style={{ padding: "var(--space-5)" }}>
+                <Card key={a.id} padding="md">
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "var(--space-3)" }}>
                         <div style={{ display: "flex", alignItems: "center", gap: "var(--space-3)" }}>
                             {a.status === "triggered" ? <AlertTriangle size={18} style={{ color: "var(--color-danger)" }} /> : a.status === "muted" ? <XCircle size={18} style={{ color: "var(--color-text-tertiary)" }} /> : <CheckCircle2 size={18} style={{ color: "var(--color-success)" }} />}
@@ -25,13 +26,13 @@ export default function AlertsPage() {
                                 <code className="mono" style={{ color: "var(--color-text-secondary)", fontSize: "12px" }}>{a.condition}</code>
                             </div>
                         </div>
-                        <span style={{ fontSize: "11px", fontWeight: 700, padding: "2px 8px", borderRadius: 4, textTransform: "uppercase", background: a.status === "triggered" ? "rgba(239,68,68,0.15)" : a.status === "muted" ? "var(--color-bg-tertiary)" : "rgba(34,197,94,0.1)", color: a.status === "triggered" ? "var(--color-danger)" : a.status === "muted" ? "var(--color-text-tertiary)" : "var(--color-success)" }}>{a.status}</span>
+                        <Badge variant={a.status === "triggered" ? "error" : a.status === "muted" ? "secondary" : "success"} style={{ textTransform: "uppercase" }}>{a.status}</Badge>
                     </div>
                     <div style={{ display: "flex", justifyContent: "space-between", fontSize: "13px", color: "var(--color-text-secondary)", paddingTop: "var(--space-3)", borderTop: "1px solid var(--color-border)" }}>
                         <span>Channel: <strong>{a.channel}</strong></span>
                         <span>Last triggered: {a.triggered}</span>
                     </div>
-                </div>
+                </Card>
             ))}
         </div>
     </div>);

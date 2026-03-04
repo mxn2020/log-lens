@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
+    "@geenius-ui/react-css": "file:/Users/mehdinabhani/Projects/antigravity/packages/geenius-ui/packages/react-css",
+    "@vercel/analytics": "^1.6.1",
     "convex": "^1.32.0",
     "lucide-react": "^0.575.0",
     "react": "^19.2.0",
@@ -36,5 +39,19 @@
     "typescript-eslint": "^8.48.0",
     "vite": "^7.3.1",
     "vitest": "^4.0.18"
+  },
+  "description": "Log analysis tool with filtering, search, and visualization",
+  "author": "Mehdi Nabhani",
+  "license": "MIT",
+  "keywords": [
+    "log",
+    "lens",
+    "react",
+    "typescript",
+    "vite"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mxn2020/log-lens"
   }
 }

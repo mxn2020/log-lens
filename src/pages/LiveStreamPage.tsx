@@ -1,4 +1,5 @@
 import { Pause, Play, Search, Filter } from "lucide-react";
+import { Button, Input } from "@geenius-ui/react-css";
 
 const logs = [
     { ts: "12:45:01.234", level: "INFO", app: "api-server", msg: "GET /api/v1/users 200 OK (12ms)" },
@@ -27,10 +28,10 @@ export default function LiveStreamPage() {
             <div style={{ display: "flex", gap: "var(--space-2)" }}>
                 <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
                     <Search size={14} style={{ position: "absolute", left: 10, color: "var(--color-text-tertiary)" }} />
-                    <input type="text" placeholder="Search logs..." style={{ padding: "6px 12px 6px 32px", borderRadius: "var(--radius-sm)", border: "1px solid var(--color-border)", background: "var(--color-bg-primary)", color: "var(--color-text-primary)", fontFamily: "var(--font-mono)", fontSize: "12px", width: 280 }} />
+                    <Input type="text" placeholder="Search logs..." style={{ paddingLeft: 32, width: 280 }} />
                 </div>
-                <button className="btn btn-sm"><Filter size={14} /> Level</button>
-                <button className="btn btn-sm"><Pause size={14} /> Pause</button>
+                <Button variant="outline" size="sm" icon={<Filter size={14} />}>Level</Button>
+                <Button variant="outline" size="sm" icon={<Pause size={14} />}>Pause</Button>
             </div>
         </div>
 
