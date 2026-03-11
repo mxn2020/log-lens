@@ -1,5 +1,6 @@
-id: ac988a83-8bd8-459f-bfeb-db4ca865edae
 name: log-lens
+project_scope: main
+project_type: standalone
 description: React + TypeScript + Vite
 tier: prototype
 lane: oss
@@ -9,5 +10,6 @@ stack: [typescript, react, convex, vite]
 repo: "https://github.com/mxn2020/log-lens"
 deploy_url: null
 last_active: 2026-02-25
-tags: []
-notes: 
+tags: [logging, viewer, analysis, debugging, observability, search, tools]
+notes: null
+id: ac988a83-8bd8-459f-bfeb-db4ca865edae
