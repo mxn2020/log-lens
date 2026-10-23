@@ -43,7 +43,7 @@
   },
   "description": "Log analysis tool with filtering, search, and visualization",
   "author": "Mehdi Nabhani",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": [
     "log",
     "lens",
